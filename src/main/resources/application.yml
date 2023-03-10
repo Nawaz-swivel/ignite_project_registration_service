@@ -1,0 +1,44 @@
+## servlet configuration
+server:
+  port: ${PORT:8082}
+#  servlet:
+#    context-path: /ignite-registration-service
+
+## application configuration
+spring:
+  application:
+    name: ${APPLICATION_NAME:ignite-registration-service}
+  datasource:
+    url: jdbc:mysql://localhost:3306/registration_db?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  ## configure active profiles
+  profiles:
+    active: prod
+
+## eureka server configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
+
+## cors configuration
+accessControl:
+  allowedOrigins: ${ALLOWED_ORIGINS:*}
+  allowedMethods: ${ALLOWED_METHODS:GET, POST, PUT, PATCH, DELETE, OPTIONS}
+  maxAge: ${MAX_AGE:3600}
+  allowedHeaders: ${ALLOWED_HEADERS:*}
+
+## Payment-Microservice
+payment:
+  baseUrl: ${PAYMENT_BASE_URL:http://localhost:8081/ignite-payment-service}
+  deleteByTuitionIdUrl: /api/v1/payment/delete/all/tuition/{tuitionId}
+  deleteByStudentIdUrl: /api/v1/payment/delete/all/student/{studentId}

@@ -1,0 +1,41 @@
+## servlet configuration
+server:
+  port: ${PORT:5000}
+#  servlet:
+#    context-path: /ignite-registration-service
+
+## application configuration
+spring:
+  application:
+    name: ${APPLICATION_NAME:ignite-registration-service}
+  datasource:
+    url: jdbc:mysql://ignite-db.cf3zfdqdzdpj.us-east-1.rds.amazonaws.com:3306/ignite_registration_db?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME:db_instance_username}
+    password: ${DB_PASSWORD:db_instance_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+## eureka server configuration
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://ignitediscovery-env.eba-77absjbd.us-east-1.elasticbeanstalk.com/eureka}
+
+## cors configuration
+accessControl:
+  allowedOrigins: ${ALLOWED_ORIGINS:*}
+  allowedMethods: ${ALLOWED_METHODS:GET, POST, PUT, PATCH, DELETE, OPTIONS}
+  maxAge: ${MAX_AGE:3600}
+  allowedHeaders: ${ALLOWED_HEADERS:*}
+
+## Payment-Microservice
+payment:
+  baseUrl: ${PAYMENT_BASE_URL:api_gateway_address/ignite-payment-service}
+  deleteByTuitionIdUrl: /api/v1/payment/delete/all/tuition/{tuitionId}
+  deleteByStudentIdUrl: /api/v1/payment/delete/all/student/{studentId}
