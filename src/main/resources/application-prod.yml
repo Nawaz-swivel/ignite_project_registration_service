@@ -22,8 +22,8 @@ spring:
 ## eureka server configuration
 eureka:
   instance:
-    hostname: http://igniteregistration-env-1.eba-rggue2hh.us-east-1.elasticbeanstalk.com
-  #    prefer-ip-address: true
+#    hostname: http://igniteregistration-env-1.eba-rggue2hh.us-east-1.elasticbeanstalk.com
+      prefer-ip-address: true
   client:
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://ignitediscovery-env.eba-77absjbd.us-east-1.elasticbeanstalk.com/eureka}
