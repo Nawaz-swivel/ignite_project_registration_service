@@ -10,8 +10,8 @@ spring:
     name: ${APPLICATION_NAME:ignite-registration-service}
   datasource:
     url: jdbc:mysql://ignite-db.cf3zfdqdzdpj.us-east-1.rds.amazonaws.com:3306/ignite_registration_db?createDatabaseIfNotExist=true
-    username: ${DB_USERNAME:db_instance_username}
-    password: ${DB_PASSWORD:db_instance_password}
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:nawaz_admin}
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
   jpa:
