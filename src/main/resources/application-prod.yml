@@ -22,7 +22,7 @@ spring:
 ## eureka server configuration
 eureka:
   instance:
-    prefer-ip-address: true
+#    prefer-ip-address: true
   client:
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://ignitediscovery-env.eba-77absjbd.us-east-1.elasticbeanstalk.com/eureka}
