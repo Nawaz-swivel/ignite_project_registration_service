@@ -1,13 +1,11 @@
 package com.swivel.ignite.registration.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.swivel.ignite.registration.dto.response.ResponseDto;
 import com.swivel.ignite.registration.enums.ErrorResponseStatusType;
 import com.swivel.ignite.registration.enums.ResponseStatusType;
 import com.swivel.ignite.registration.enums.SuccessResponseStatusType;
 import com.swivel.ignite.registration.wrapper.ErrorResponseWrapper;
 import com.swivel.ignite.registration.wrapper.ResponseWrapper;
-import com.swivel.ignite.registration.wrapper.RestErrorResponseWrapper;
 import com.swivel.ignite.registration.wrapper.SuccessResponseWrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,19 +39,6 @@ public class Controller {
         ResponseWrapper responseWrapper = new ErrorResponseWrapper(ResponseStatusType.ERROR, ErrorResponseStatusType
                 .INTERNAL_SERVER_ERROR.getMessage(), null, ERROR_MESSAGE, ErrorResponseStatusType
                 .INTERNAL_SERVER_ERROR.getCode());
-        return new ResponseEntity<>(responseWrapper, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    /**
-     * This method creates a response for rest api call errors
-     *
-     * @param status error status
-     * @param data   rest api response
-     * @return internal server error response
-     */
-    protected ResponseEntity<ResponseWrapper> getInternalServerErrorResponse(ErrorResponseStatusType status, JsonNode data) {
-        ResponseWrapper responseWrapper = new RestErrorResponseWrapper(ResponseStatusType.ERROR, status.getMessage(),
-                data, ERROR_MESSAGE, status.getCode());
         return new ResponseEntity<>(responseWrapper, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

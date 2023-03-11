@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class RegistrationApplicationTests {
 
-	/**
-	 * This method tests Spring application main run method
-	 */
-//	@Test
-//	void Should_RunSpringApplication() {
-//		RegistrationApplication.main(new String[]{});
-//
-//		assertTrue(true, "Spring Application Context Loaded Successfully");
-//	}
+    /**
+     * This method tests Spring application main run method
+     */
+    @Test
+    void Should_RunSpringApplication() {
+        RegistrationApplication.main(new String[]{});
+
+        assertTrue(true, "Spring Application Context Loaded Successfully");
+    }
 }

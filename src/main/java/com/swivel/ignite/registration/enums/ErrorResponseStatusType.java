@@ -14,8 +14,8 @@ public enum ErrorResponseStatusType {
     TUITION_NOT_FOUND(4004, "Tuition not found"),
     STUDENT_NOT_FOUND(4005, "Student not found"),
     STUDENT_NOT_ENROLLED_IN_TUITION(4006, "Student not enrolled in tuition"),
-    STUDENT_ALREADY_ENROLLED_IN_A_TUITION(4008, "Student already enrolled in a tuition"),
-    USERNAME_PASSWORD_NOT_MATCH(4009, "Username and password do not match"),
+    STUDENT_ALREADY_ENROLLED_IN_A_TUITION(4007, "Student already enrolled in a tuition"),
+    USERNAME_PASSWORD_NOT_MATCH(4008, "Username and password do not match"),
     INTERNAL_SERVER_ERROR(5000, "Internal Server Error");
 
     private final int code;

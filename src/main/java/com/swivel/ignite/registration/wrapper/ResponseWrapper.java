@@ -16,7 +16,6 @@ public class ResponseWrapper implements BaseDto {
     /**
      * @param status         status
      * @param message        dev message
-     *                       //     * @param data           data
      * @param displayMessage display message
      */
     public ResponseWrapper(ResponseStatusType status, String message, String displayMessage) {
