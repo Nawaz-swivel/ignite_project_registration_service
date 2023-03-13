@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1/student")
 @Slf4j
+@CrossOrigin
 public class StudentController extends Controller {
 
     private final StudentService studentService;
