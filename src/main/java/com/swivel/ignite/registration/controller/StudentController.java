@@ -26,6 +26,7 @@ public class StudentController extends Controller {
 
     private final StudentService studentService;
     private final TuitionService tuitionService;
+    private final String unusedVar = "unusedVar";
 
     @Autowired
     public StudentController(StudentService studentService, TuitionService tuitionService) {
