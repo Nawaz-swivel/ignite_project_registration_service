@@ -121,12 +121,13 @@ public class StudentService {
      * This method removes a student from tuition
      *
      * @param student student
+     * @return Student
      */
-    public void removeStudentFromTuition(Student student) {
+    public Student removeStudentFromTuition(Student student) {
         try {
             student.setTuition(null);
             student.setTuitionJoinedOn(null);
-            studentRepository.save(student);
+            return studentRepository.save(student);
         } catch (DataAccessException e) {
             throw new RegistrationServiceException("Failed to remove student of id: " + student.getId() + " from tuition", e);
         }

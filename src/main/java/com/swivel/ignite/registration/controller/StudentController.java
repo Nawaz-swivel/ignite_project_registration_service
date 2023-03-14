@@ -185,9 +185,10 @@ public class StudentController extends Controller {
                 log.error("Student is not enrolled in tuition id: " + tuition.getId());
                 return getBadRequestResponse(ErrorResponseStatusType.STUDENT_NOT_ENROLLED_IN_TUITION);
             }
-            studentService.removeStudentFromTuition(student);
+            Student student1 = studentService.removeStudentFromTuition(student);
+            StudentResponseDto responseDto = new StudentResponseDto(student1);
             log.debug("Successfully removed student of id: {} from the tuition", studentId);
-            return getSuccessResponse(SuccessResponseStatusType.REMOVE_TUITION_STUDENT, null);
+            return getSuccessResponse(SuccessResponseStatusType.REMOVE_TUITION_STUDENT, responseDto);
         } catch (TuitionNotFoundException e) {
             log.error("Tuition not found for removing student from tuition of id: {}", tuitionId, e);
             return getBadRequestResponse(ErrorResponseStatusType.TUITION_NOT_FOUND);
