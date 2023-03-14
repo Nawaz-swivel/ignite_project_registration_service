@@ -118,7 +118,7 @@ class TuitionServiceTest {
      */
     @Test
     void Should_DeleteTuition_When_DeletingTuitionIsSuccessful() throws IOException {
-        doNothing().when(studentService).removeStudentFromTuition(any(Student.class));
+        when(studentService.removeStudentFromTuition(any(Student.class))).thenReturn(getSampleStudent());
         doNothing().when(paymentService).deleteByTuitionId(anyString());
         tuitionService.deleteTuition(getSampleTuition());
         verify(tuitionRepository).delete(any(Tuition.class));
@@ -128,7 +128,7 @@ class TuitionServiceTest {
     void Should_ThrowRegistrationServiceException_When_DeletingTuitionIsFailed() throws IOException {
         Tuition tuition = getSampleTuition();
 
-        doNothing().when(studentService).removeStudentFromTuition(any(Student.class));
+        when(studentService.removeStudentFromTuition(any(Student.class))).thenReturn(getSampleStudent());
         doNothing().when(paymentService).deleteByTuitionId(anyString());
         doThrow(new DataAccessException(ERROR) {
         }).when(tuitionRepository).delete(any(Tuition.class));
