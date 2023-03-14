@@ -342,7 +342,7 @@ class StudentControllerTest {
 
         when(studentService.findById(anyString())).thenReturn(student);
         when(tuitionService.findById(anyString())).thenReturn(student.getTuition());
-        doNothing().when(studentService).removeStudentFromTuition(any(Student.class));
+        when(studentService.removeStudentFromTuition(any(Student.class))).thenReturn(getSampleStudent());
 
         String uri = REMOVE_STUDENT_FROM_TUITION_URI.replace("{studentId}", STUDENT_ID)
                 .replace("{tuitionId}", TUITION_ID);
@@ -355,7 +355,7 @@ class StudentControllerTest {
                         .getMessage()))
                 .andExpect(jsonPath("$.statusCode").value(SuccessResponseStatusType.REMOVE_TUITION_STUDENT
                         .getCode()))
-                .andExpect(jsonPath("$.data").doesNotExist())
+                .andExpect(jsonPath("$.data.studentId").value(STUDENT_ID))
                 .andExpect(jsonPath("$.displayMessage").value(SUCCESS_MESSAGE));
     }
 
